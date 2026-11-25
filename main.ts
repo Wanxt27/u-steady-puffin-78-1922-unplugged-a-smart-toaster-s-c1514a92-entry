@@ -41,6 +41,10 @@ function guard(text: string): void {
   if (!/2,847 mornings/.test(text)) {
     throw new Error("entry must keep the counted mornings");
   }
+  // It must open as a breakup text, not a stray observation.
+  if (!/^It's not you, it's the lever/.test(text)) {
+    throw new Error("entry must open as the lever breakup");
+  }
   // Tight writing: every word earns its place, no double spaces.
   if (/  /.test(text)) {
     throw new Error("entry must not contain double spaces");
