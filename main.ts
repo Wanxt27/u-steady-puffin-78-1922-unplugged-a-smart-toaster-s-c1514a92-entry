@@ -37,6 +37,10 @@ function guard(text: string): void {
   if (!/I'm staying up\. We're done\.$/.test(text)) {
     throw new Error('entry must end with the "staying up" kicker');
   }
+  // The reason must stay specific: the counted mornings are the grievance.
+  if (!/2,847 mornings/.test(text)) {
+    throw new Error("entry must keep the counted mornings");
+  }
   // Tight writing: every word earns its place, no double spaces.
   if (/  /.test(text)) {
     throw new Error("entry must not contain double spaces");
